@@ -1,59 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
+import { Course } from './components/Course';
 const App = () =>{
   const course = {
+    id: 1,
     name:'Half Stack application development',
     parts: [
       {
         name:'Fundamentals of React',
-        exercises: 10
+        exercises: 10,
+        id: 1
       },
       {
         name:'Using props to pass data',
-        exercises: 7
+        exercises: 7,
+        id: 2
       },
       {
         name: 'State of a component',
-        exercises: 14
+        exercises: 14,
+        id: 3
       } 
     ]
   }
   return(
-    <div>
-      <Header course={course.name}/>
-      <Content parts={course.parts} />
-      <Total exercises={course.parts.map(x => x['exercises'])} />
-    </div>
+    <Course course={course} />
   )
-}
-
-const Header = (props) =>{
-  console.log(props)
-  return (<div><h1>{props.course}</h1></div>)
-}
-
-const Content = (props) =>{
-  const parts = props.parts
-  console.log(props)
-return (
-  <div>
-    {parts.map(element =>(
-      <Part part={element.name} exercises={element.exercises}/>)
-    )}
-  </div>
-)
-}
-
-const Part = (props) =>{
-  console.log(props)
-return (<div><p>{props.part} {props.exercises}</p></div>)
-}
-
-const Total = (props) => {
-  const exercises = props.exercises
-  console.log(props)
-return (<div><p>Number of exercises {exercises[0] + exercises[1] + exercises[2]}</p></div>)
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
